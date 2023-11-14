@@ -14,7 +14,7 @@ print("Pin Modes Set.....")
 time.sleep(5)
 
 def main():
-    while True:sudo apt-get install python3-dev python3-rpi.gpio
+    while True:
         GPIO.output(trigPin, GPIO.HIGH)
         start_time = time.time()
         time.sleep(0.00001)
