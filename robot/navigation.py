@@ -6,7 +6,7 @@ LeftWheelPins2 = 3
 RightWheelPins1 =4
 RightWheelPins2 =17
 trigPins = [14, 22, 23]
-EchoPins = [15, 27, 24]
+echoPins = [15, 27, 24]
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(LeftWheelPins1, GPIO.OUT, initial = GPIO.LOW)
@@ -17,14 +17,14 @@ GPIO.setup(RightWheelPins2, GPIO.OUT, initial = GPIO.LOW)
 #read Data form ultrasonic data and returns the data
 def ReadUltrasonic():
     distance = []
-    for trigPin, echoPin in trigPins, EchoPins:
-        GPIO.output(trigPin, GPIO.HIGH)
+    for i in range(3):
+        GPIO.output(trigPins[i], GPIO.HIGH)
         start_time = time.time()
         time.sleep(0.00001)
-        GPIO.output(trigPin, GPIO.LOW)
-        while GPIO.input(echoPin) == 0:
+        GPIO.output(trigPins[i], GPIO.LOW)
+        while GPIO.input(echoPins[i]) == 0:
             start_time = time.time()
-        while GPIO.input(echoPin) == 1:
+        while GPIO.input(echoPins[i]) == 1:
             echo_time = time.time()
             break
         duration = echo_time - start_time
@@ -71,6 +71,7 @@ def turnRight():
 def main():
     while True:
         SonicData = ReadUltrasonic()
+        
         
 
 
