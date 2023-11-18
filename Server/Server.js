@@ -14,5 +14,15 @@ app.get("/" ,function(req, res){
 
 app.get("/getSensorData", function(req, res){
     app.redirect("")
-})
+});
+
+app.get("/sendSensorData", function(req, res){
+    distanceFront = req.query.distanceFront;
+    distanceRight = req.query.distanceRight;
+    distanceLeft = req.query.distanceLeft;
+    req.query.time = new Date().getTime();
+
+    res.send('ok');
+});
+
 app.listen(port);
