@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParse = require('body-parser');
 var hostname = process.env.HOSTNAME || 'localhost';
+// var hostname = 192.168.0.130;
 
 app.use(express.static(__dirname));
 var port = 8080;
@@ -21,6 +22,7 @@ app.get("/sendSensorData", function(req, res){
     distanceRight = req.query.distanceRight;
     distanceLeft = req.query.distanceLeft;
     req.query.time = new Date().getTime();
+    console.log(distanceFront, distanceRight, distanceLeft);
 
     res.send('ok');
 });
