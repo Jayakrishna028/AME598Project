@@ -22,8 +22,8 @@ p2 = GPIO.PWM(en2 , 1000)
 
 #time delay
 time.sleep(1)
-p1.start(25)
-p2.start(25)
+p1.start(50)
+p2.start(50)
 start_time = time.time()
 current = time.time()
 while current < start_time+10:
