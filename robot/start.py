@@ -11,7 +11,7 @@ GPIO.setup(15 , GPIO.IN)
 distanceFront = Distance.distance(14 , 15)
 
 while True:
-    print(distanceFront)
+    print(f"${distanceFront} > ${time.time()}" )
     time.sleep(0.5)
 
 
