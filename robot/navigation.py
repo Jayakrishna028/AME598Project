@@ -14,25 +14,6 @@ GPIO.setup(LeftWheelPins2, GPIO.OUT, initial = GPIO.LOW)
 GPIO.setup(RightWheelPins1, GPIO.OUT, initial = GPIO.LOW)
 GPIO.setup(RightWheelPins2, GPIO.OUT, initial = GPIO.LOW)
 
-#read Data form ultrasonic data and returns the data
-def ReadUltrasonic():
-    distance = []
-    for i in range(3):
-        GPIO.output(trigPins[i], GPIO.HIGH)
-        start_time = time.time()
-        time.sleep(0.00001)
-        GPIO.output(trigPins[i], GPIO.LOW)
-        while GPIO.input(echoPins[i]) == 0:
-            start_time = time.time()
-        while GPIO.input(echoPins[i]) == 1:
-            echo_time = time.time()
-            break
-        duration = echo_time - start_time
-        distance.append((duration*34300)/2)
-        print(f"Distance: {distance}")
-    
-    return distance
-
 #move forward
 def Fowrard():
     GPIO.output(LeftWheelPins1, 1)
