@@ -14,10 +14,15 @@ char* url;
 // Ultrasonic Pins
 const int trigPin1 = 2;
 const int echoPin1 = 4;
-const int trigPin2 = 10;
-const int echoPin2 = 7;
-const int trigPin3 = 11;
-const int echoPin3 = 6;
+const int trigPin2 = 5;
+const int echoPin2 = 18;
+const int trigPin3 = 19;
+const int echoPin3 = 21;
+
+const int rightPin1 = 22;
+const int rightPin2 = 23;
+const int leftPin1 = 35;
+const int leftPin2 = 34;
 
 // distCalculate(int pinNumber){
 //   digitalWrite(pinNumber, LOW);
@@ -32,6 +37,17 @@ void setup() {
   Serial.begin(115200);
   WiFi.begin(ssid, password);
   Serial.println("Connecting to Wifi.....");
+  pinMode(trigPin1 , OUTPUT);
+  pinMode(echoPin1 , INPUT);
+  pinMode(trigPin2 , OUTPUT);
+  pinMode(echoPin2 , INPUT);
+  pinMode(trigPin3 , OUTPUT);
+  pinMode(echoPin3 , INPUT);
+  pinMode(rightPin1 , OUTPUT);
+  pinMode(rightPin2 , OUTPUT);
+  pinMode(leftPin1 , OUTPUT);
+  pinMode(leftPin2 , OUTPUT);
+  
   
   while(WiFi.status() != WL_CONNECTED){
     delay(1000);
@@ -45,24 +61,43 @@ void setup() {
 void loop() {
   // main Loop
   if(millis()-lastTime>2){
-    long distanceFront, distanceRight, distanceLeft;
+    // long distanceFront, distanceRight, distanceLeft;
 
-    distanceFront = UltrasonicDistance(trigPin1, echoPin1);
-    distanceRight = UltrasonicDistance(trigPin2, echoPin2);
-    distanceLeft = UltrasonicDistance(trigPin3, echoPin3);
+    // distanceFront = UltrasonicDistance(trigPin1, echoPin1);
+    // distanceRight = UltrasonicDistance(trigPin2, echoPin2);
+    // distanceLeft = UltrasonicDistance(trigPin3, echoPin3);
 
-    String url = String(ServerName) + "?distanceFront=" + distanceFront + "&distanceRight=" + 65 + "&distanceLeft=" + 23;
-    sendDataToServer(distanceFront , distanceRight, distanceLeft, url.c_str());
-    Serial.println(url);
+    // String url = String(ServerName) + "?distanceFront=" + distanceFront + "&distanceRight=" + distanceRight + "&distanceLeft=" + distanceLeft;
+    // sendDataToServer(distanceFront , distanceRight, distanceLeft, url.c_str());
+    // Serial.println(url);
     
-    lastTime = millis();
+    // lastTime = millis();
+
+    moveForward();
+    delay(5000);
+    moveBack();
+    delay(5000);
   }
 
+  // if(distanceFront > 25){
+  //   moveForward();
+  // }
+  // else if(distanceRight > 25 || distanceLeft > 25){
+  //   if(distanceRight > 25){
+  //     turnRight()
+  //   }
+  //   elseif(distanceLeft > 25){
+  //     turnLeft();
+  //   }
+  // }
+  // else{
+  //   moveBack();s
+  // }
 }
 
-long UltrasonicDistance(long trigPin , long echoPin){
+long UltrasonicDistance(int trigPin , int echoPin){
   // Measure distance from sensor
-  long distance, duration;
+  long distance , duration;
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
   digitalWrite(trigPin, HIGH);
@@ -97,4 +132,32 @@ void sendDataToServer(long distance1, long distance2, long distance3, const char
   // Free resources
   http.end();
 
+}
+
+void moveForward(){
+  digitalWrite(rightPin1 , HIGH);
+  digitalWrite(rightPin2 , LOW);
+  digitalWrite(leftPin1, HIGH);
+  digitalWrite(leftPin2 , LOW);
+}
+
+void moveBack(){
+  digitalWrite(rightPin1 , LOW);
+  digitalWrite(rightPin2 , HIGH);
+  digitalWrite(leftPin1, LOW);
+  digitalWrite(leftPin2 , HIGH);
+}
+
+void turnRight(){
+  digitalWrite(rightPin1 , LOW);
+  digitalWrite(rightPin2 , LOW);
+  digitalWrite(leftPin1, HIGH);
+  digitalWrite(leftPin2 , LOW);
+}
+
+void turnLeft(){
+  digitalWrite(rightPin1 , HIGH);
+  digitalWrite(rightPin2 , LOW);
+  digitalWrite(leftPin1, LOW);
+  digitalWrite(leftPin2 , LOW);
 }
