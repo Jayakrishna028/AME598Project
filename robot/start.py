@@ -8,10 +8,9 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(14 , GPIO.OUT)
 GPIO.setup(15 , GPIO.IN)
 
-distanceFront = Distance.distance(14 , 15)
-
 while True:
-    print(f"${distanceFront} > ${time.time()}" )
+    distanceFront = Distance.distance(14 , 15)
+    print(f"{distanceFront} > {time.time()}" )
     time.sleep(0.5)
 
 
