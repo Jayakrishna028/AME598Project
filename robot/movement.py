@@ -31,7 +31,7 @@ while True:
     GPIO.output(RightSig1, GPIO.HIGH)
     GPIO.output(LeftSig2, GPIO.LOW)
     GPIO.output(RightSig2, GPIO.LOW)
-    if time.time() - start_time() > 10:
+    if time.time() - start_time > 10:
         break
     
 GPIO.cleanup()
