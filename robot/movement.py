@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import time
-GPIO.cleanup()
+
 RightSig1 = 2
 RightSig2 = 3
 LeftSig1 = 4
@@ -18,9 +18,10 @@ time.sleep(1)
 start_time = time.time()
 current = time.time()
 while current < start_time+10:
+    print(time.time())
     GPIO.output(LeftSig1, GPIO.HIGH)
     GPIO.output(RightSig1, GPIO.HIGH)
     GPIO.output(LeftSig2, GPIO.LOW)
     GPIO.output(RightSig2, GPIO.LOW)
     
-    
+GPIO.cleanup()
