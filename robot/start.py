@@ -46,8 +46,6 @@ while True:
     # print(f"distance Front = {distanceFront}    Distance Right = {distanceRight}    Distance Left = {distanceLeft}" )
     time.sleep(0.5)
 
-    if distanceFront < 25:
-        navigation.stop()
 
 
 GPIO.cleanup()
