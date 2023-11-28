@@ -15,7 +15,7 @@ GPIO.setup(RightWheelPins1, GPIO.OUT, initial = GPIO.LOW)
 GPIO.setup(RightWheelPins2, GPIO.OUT, initial = GPIO.LOW)
 
 #move forward
-def Fowrard():
+def Forward():
     GPIO.output(LeftWheelPins1, 1)
     GPIO.output(LeftWheelPins2, 0)
     GPIO.output(RightWheelPins1, 1)
@@ -23,7 +23,7 @@ def Fowrard():
     time.sleep(0.1)
 
 #reset the pins of motors
-def reset():
+def stop():
     GPIO.output(LeftWheelPins1, 0)
     GPIO.output(LeftWheelPins2, 0)
     GPIO.output(RightWheelPins1, 0)
@@ -38,7 +38,7 @@ def turnLeft():
     GPIO.output(RightWheelPins1, 0)
     GPIO.output(RightWheelPins2, 1)
     time.sleep(1)
-    reset()
+    stop()
 
 #turn Right and wait
 def turnRight():
@@ -47,16 +47,8 @@ def turnRight():
     GPIO.output(RightWheelPins1, 1)
     GPIO.output(RightWheelPins2, 0)
     time.sleep(1)
-    reset()
-
-def main():
-    while True:
-        SonicData = ReadUltrasonic()
-        
+    stop()
         
 
-
-if __name__ == "__main__":
-    main()
 
 
