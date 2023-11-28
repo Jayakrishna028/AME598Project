@@ -2,6 +2,8 @@ import RPi.GPIO as GPIO
 import time
 import Distance
 
+GPIO.setmode(GPIO.BCM)
+
 trigPin1 = 14
 echoPin1 = 15
 
