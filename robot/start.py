@@ -24,8 +24,16 @@ GPIO.setup(RightSig1, GPIO.OUT)
 GPIO.setup(RightSig2, GPIO.OUT)
 GPIO.setup(LeftSig1, GPIO.OUT)
 GPIO.setup(LeftSig2, GPIO.OUT)
-GPIO.setup(14 , GPIO.OUT)
-GPIO.setup(15 , GPIO.IN)
+
+#ultrasonic pins 
+GPIO.setup(trigPin1 , GPIO.OUT)
+GPIO.setup(echoPin1 , GPIO.IN)
+GPIO.setup(trigPin2 , GPIO.OUT)
+GPIO.setup(echoPin2 , GPIO.IN)
+GPIO.setup(trigPin3 , GPIO.OUT)
+GPIO.setup(echoPin3 , GPIO.IN)
+
+
 
 navigation.Forward()
 
