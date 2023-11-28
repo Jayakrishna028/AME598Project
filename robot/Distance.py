@@ -5,12 +5,20 @@ import time
 GPIO.setmode(GPIO.BCM)
 
 # set GPIO Pins
-GPIO_TRIGGER1 = 17
-GPIO_ECHO1 = 27
+trigPin1 = 14
+echoPin1 = 15
+trigPin2 = 17
+echoPin2 = 18
+trigPin3 = 23
+echoPin3 = 24
 
 # set GPIO direction (IN / OUT)
-GPIO.setup(GPIO_TRIGGER1, GPIO.OUT)
-GPIO.setup(GPIO_ECHO1, GPIO.IN)
+GPIO.setup(trigPin1 , GPIO.OUT)
+GPIO.setup(echoPin1 , GPIO.IN)
+GPIO.setup(trigPin2 , GPIO.OUT)
+GPIO.setup(echoPin2 , GPIO.IN)
+GPIO.setup(trigPin3 , GPIO.OUT)
+GPIO.setup(echoPin3 , GPIO.IN)
 
 def distance(GPIO_TRIGGER, GPIO_ECHO):
     # set Trigger to HIGH
