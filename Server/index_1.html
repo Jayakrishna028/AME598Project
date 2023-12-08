@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<script type = "importmap">
+			{
+				"imports":{
+					"three": "./node_modules/three/build/three.module.js",
+					"three/addons/":"./node_modules/three/examples/jsm/"
+				}
+			}
+
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/three@0.137.0/build/three.min.js"></script>
+		<script src = "/public/request_functions.js"></script>
+		<script>
+			function getDataFromServer()
+			{
+				var url = "./getValue"
+				var response_handler_callback = function(data){
+					console.log(data, typeof data);
+					var args = data.split(" ");
+					console.log(args);
+
+					var dFront = args[1];
+					var dRight = args[2];
+					var dLeft = args[3];
+					// var d = parseFloat(args[0]) * 1.8 + 32;
+					// var h = args[1];
+					var time = args[0];
+
+					var output = 
+					"<h2> Front Distance </h2> <p>" + dFront + "cm</p>"+
+					"<h2> Right Distance </h2> <p>" + dRight + " cm</p>"+
+					"<h2> Left Distance </h2> <p>" + dLeft + "cm</p>"
+					"<p> at " + new Date(parseInt(time)) + "</p>";
+
+					document.getElementById("data").innerHTML = output;
+
+				}
+				loadFile(url, response_handler_callback);
+			}
+		</script>
+		<meta charset="utf-8">
+		<title>Plotting the points</title>
+		<style>
+			body { margin: 0; }
+		</style>
+	</head>
+	<body onload="setInterval(getDataFromServer(), 1000)">
+		<!-- <div id = "data" >
+			<h2>Data</h2>
+		</div> -->
+		<script type ="module" src="/renders/main.js"></script>
+
+	</body>
+</html>

@@ -19,7 +19,7 @@ console.log("The server is running at http://localhost:8080");
 
 //Just a basic redirect to index.html
 app.get("/" ,function(req, res){ 
-    res.redirect("test.html");
+    res.redirect("index.html");
 });
 
 app.get("/getSensorData", function(req, res){
@@ -62,8 +62,14 @@ app.get("/getValue", function (req, res) {
     res.send(reqTime.toString() + " " + distanceFront + " " + distanceRight + " " + distanceLeft + "\r");
   });
 
-app.get("/getlastten", function(req, res){
-    
+  app.get("/getLatestThree", function(req, res) {
+    db.collection("dataPoints").find().sort({ reqTime: -1 }).limit(3).toArray(function(err, results) {
+        if (err) {
+            res.status(500).send("Error fetching data");
+        } else {
+            res.json(results);
+        }
+    });
 });
 
 
