@@ -42,7 +42,7 @@ while True:
     distanceLeft = Distance.distance(trigPin3 , echoPin3)
     # print(distanceFront)
     serverRequest(distanceFront, distanceRight, distanceLeft)
-    print(distanceFront)
+    print(f"{distanceFront} and {distanceLeft}")
     
     # # print(f"distance Front = {distanceFront}    Distance Right = {distanceRight}    Distance Left = {distanceLeft}" )
     # time.sleep(0.5)
