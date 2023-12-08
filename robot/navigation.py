@@ -5,8 +5,6 @@ LeftWheelPins1 = 2
 LeftWheelPins2 = 3
 RightWheelPins1 =4
 RightWheelPins2 =17
-trigPins = [14, 22, 23]
-echoPins = [15, 27, 24]
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(LeftWheelPins1, GPIO.OUT, initial = GPIO.LOW)
@@ -33,7 +31,7 @@ def stop():
 #turn Left and wait
 def turnLeft():
 
-    GPIO.output(LeftWheelPins1, 1)
+    GPIO.output(LeftWheelPins1, 0)
     GPIO.output(LeftWheelPins2, 0)
     GPIO.output(RightWheelPins1, 0)
     GPIO.output(RightWheelPins2, 1)
@@ -42,12 +40,20 @@ def turnLeft():
 
 #turn Right and wait
 def turnRight():
-    GPIO.output(LeftWheelPins1, 0)
-    GPIO.output(LeftWheelPins2, 1)
-    GPIO.output(RightWheelPins1, 1)
+    GPIO.output(LeftWheelPins1, 1)
+    GPIO.output(LeftWheelPins2, 0)
+    GPIO.output(RightWheelPins1, 0)
     GPIO.output(RightWheelPins2, 0)
     time.sleep(1)
     stop()
+
+def back():
+    GPIO.output(LeftWheelPins1, 0)
+    GPIO.output(LeftWheelPins2, 1)
+    GPIO.output(RightWheelPins1, 0)
+    GPIO.output(RightWheelPins2, 1)  
+    time.sleep(5)
+
         
 
 

@@ -19,7 +19,7 @@ console.log("The server is running at http://localhost:8080");
 
 //Just a basic redirect to index.html
 app.get("/" ,function(req, res){ 
-    res.redirect("index.html");
+    res.redirect("test.html");
 });
 
 app.get("/getSensorData", function(req, res){
@@ -27,25 +27,34 @@ app.get("/getSensorData", function(req, res){
 });
 
 // Processing the data from the car and add it to the database
-app.get("/sendSensorData", function(req, res){
+app.get("/sendSensorData", function(req, res) {
     distanceFront = req.query.distanceFront;
     distanceRight = req.query.distanceRight;
     distanceLeft = req.query.distanceLeft;
     reqTime = new Date().getTime();
-    req.query.time = reqTime;
-    console.log(distanceFront, distanceRight, distanceLeft);
-    //creating a JS Object
-    var dataObj ={
-        dFront : distanceFront,
-        dRight : distanceRight,
-        dLeft : distanceLeft,
-        reqTime : reqTime
-    }
-    db.collection("dataPoints").insert(dataObj, function(err, result){
-        console.log("added data points");
-    });
 
-    res.send('ok');
+    // Create a single data point object with three vectors
+    var dataObj = {
+        vectors: [
+            { x: 0, y: distanceFront, z: 0 },
+            { x: distanceRight, y: 0, z: 0 },
+            { x: -distanceLeft, y: 0, z: 0 }
+        ],
+        reqTime: reqTime
+    };
+
+    console.log(dataObj);
+
+    // Insert the data point into the "dataPoints" collection
+    db.collection("dataPoints").insert(dataObj, function(err, result) {
+        if (err) {
+            console.error("Error adding data point:", err);
+            res.status(500).send('Error');
+        } else {
+            console.log("Added data point");
+            res.send('ok');
+        }
+    });
 });
 
 app.get("/getValue", function (req, res) {

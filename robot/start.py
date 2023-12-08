@@ -1,6 +1,7 @@
 import navigation
 import time
 import Distance
+from http_request import serverRequest
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
@@ -14,8 +15,8 @@ LeftSig2 = 17
 
 trigPin1 = 14
 echoPin1 = 15
-trigPin2 = 17
-echoPin2 = 18
+trigPin2 = 7
+echoPin2 = 8
 trigPin3 = 23
 echoPin3 = 24
 
@@ -33,18 +34,27 @@ GPIO.setup(echoPin2 , GPIO.IN)
 GPIO.setup(trigPin3 , GPIO.OUT)
 GPIO.setup(echoPin3 , GPIO.IN)
 
-
-
-navigation.Forward()
-
-
 while True:
     distanceFront = Distance.distance(trigPin1 , echoPin1)
-    # distanceRight = Distance.distance(trigPin2, echoPin2)
-    # distanceLeft = Distance.distance(trigPin3 , echoPin3)
+    distanceRight = Distance.distance(trigPin2, echoPin2)
+    distanceLeft = Distance.distance(trigPin3 , echoPin3)
+    # print(distanceFront)
+    serverRequest(distanceFront, distanceRight, distanceLeft)
     print(distanceFront)
-    # print(f"distance Front = {distanceFront}    Distance Right = {distanceRight}    Distance Left = {distanceLeft}" )
-    time.sleep(0.5)
+    
+    # # print(f"distance Front = {distanceFront}    Distance Right = {distanceRight}    Distance Left = {distanceLeft}" )
+    # time.sleep(0.5)
+
+    # if distanceFront > 25:
+    #     navigation.Forward()
+    # elif distanceRight() > 25:
+    #     navigation.turnRight()
+    # elif distanceLeft > 25:
+    #     navigation.turnLeft()
+    # else:
+    #     navigation.back()
+    #     navigation.turnRight()
+        
 
 
 
