@@ -12,46 +12,59 @@ GPIO.setup(LeftWheelPins2, GPIO.OUT, initial = GPIO.LOW)
 GPIO.setup(RightWheelPins1, GPIO.OUT, initial = GPIO.LOW)
 GPIO.setup(RightWheelPins2, GPIO.OUT, initial = GPIO.LOW)
 
+# Create PWM objects
+pwm_LeftWheelPins1 = GPIO.PWM(LeftWheelPins1, 1000)  # Set frequency to 1 kHz
+pwm_LeftWheelPins2 = GPIO.PWM(LeftWheelPins2, 1000)  
+pwm_RightWheelPins1 = GPIO.PWM(RightWheelPins1, 1000)  
+pwm_RightWheelPins2 = GPIO.PWM(RightWheelPins2, 1000)  
+
+# Start PWM with 0% duty cycle (off)
+pwm_LeftWheelPins1.start(0)
+pwm_LeftWheelPins2.start(0)
+pwm_RightWheelPins1.start(0)
+pwm_RightWheelPins2.start(0)
+
 #move forward
+# Move forward with half speed
 def Forward():
-    GPIO.output(LeftWheelPins1, 1)
-    GPIO.output(LeftWheelPins2, 0)
-    GPIO.output(RightWheelPins1, 1)
-    GPIO.output(RightWheelPins2, 0)  
+    pwm_LeftWheelPins1.ChangeDutyCycle(50)  # 50% duty cycle
+    pwm_LeftWheelPins2.ChangeDutyCycle(0)
+    pwm_RightWheelPins1.ChangeDutyCycle(50)  # 50% duty cycle
+    pwm_RightWheelPins2.ChangeDutyCycle(0)
     time.sleep(0.1)
 
-#reset the pins of motors
+# Stop the motors
 def stop():
-    GPIO.output(LeftWheelPins1, 0)
-    GPIO.output(LeftWheelPins2, 0)
-    GPIO.output(RightWheelPins1, 0)
-    GPIO.output(RightWheelPins2, 0)  
+    pwm_LeftWheelPins1.ChangeDutyCycle(0)
+    pwm_LeftWheelPins2.ChangeDutyCycle(0)
+    pwm_RightWheelPins1.ChangeDutyCycle(0)
+    pwm_RightWheelPins2.ChangeDutyCycle(0)
     time.sleep(0.1) 
 
-#turn Left and wait
+# Turn left with half speed
 def turnLeft():
-
-    GPIO.output(LeftWheelPins1, 0)
-    GPIO.output(LeftWheelPins2, 0)
-    GPIO.output(RightWheelPins1, 0)
-    GPIO.output(RightWheelPins2, 1)
+    pwm_LeftWheelPins1.ChangeDutyCycle(0)
+    pwm_LeftWheelPins2.ChangeDutyCycle(0)
+    pwm_RightWheelPins1.ChangeDutyCycle(50)  # 50% duty cycle
+    pwm_RightWheelPins2.ChangeDutyCycle(0)
     time.sleep(1)
     stop()
 
-#turn Right and wait
+# Turn right with half speed
 def turnRight():
-    GPIO.output(LeftWheelPins1, 1)
-    GPIO.output(LeftWheelPins2, 0)
-    GPIO.output(RightWheelPins1, 0)
-    GPIO.output(RightWheelPins2, 0)
+    pwm_LeftWheelPins1.ChangeDutyCycle(50)  # 50% duty cycle
+    pwm_LeftWheelPins2.ChangeDutyCycle(0)
+    pwm_RightWheelPins1.ChangeDutyCycle(0)
+    pwm_RightWheelPins2.ChangeDutyCycle(0)
     time.sleep(1)
     stop()
 
+# Move backward with half speed
 def back():
-    GPIO.output(LeftWheelPins1, 0)
-    GPIO.output(LeftWheelPins2, 1)
-    GPIO.output(RightWheelPins1, 0)
-    GPIO.output(RightWheelPins2, 1)  
+    pwm_LeftWheelPins1.ChangeDutyCycle(0)
+    pwm_LeftWheelPins2.ChangeDutyCycle(50)  # 50% duty cycle
+    pwm_RightWheelPins1.ChangeDutyCycle(0)
+    pwm_RightWheelPins2.ChangeDutyCycle(50)  # 50% duty cycle
     time.sleep(5)
 
         
