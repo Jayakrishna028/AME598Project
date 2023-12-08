@@ -38,7 +38,7 @@ GPIO.setup(echoPin3 , GPIO.IN)
 
 startTime = time.time()
 
-while time.time() - startTime < 30:
+while time.time() - startTime < 60:
     distanceFront = Distance.distance(trigPin1 , echoPin1)
     distanceRight = Distance.distance(trigPin2, echoPin2)
     distanceLeft = Distance.distance(trigPin3 , echoPin3)
@@ -50,17 +50,17 @@ while time.time() - startTime < 30:
     # # print(f"distance Front = {distanceFront}    Distance Right = {distanceRight}    Distance Left = {distanceLeft}" )
     time.sleep(0.5)
 
-    if distanceFront > 25:
+    if distanceFront > 30:
         navigation.Forward()
-    elif distanceRight() > 25:
+    elif distanceRight() > 30:
         navigation.turnRight()
-    elif distanceLeft > 25:
+    elif distanceLeft > 30:
         navigation.turnLeft()
     else:
         navigation.back()
         navigation.turnRight()
         
-
+navigation.stop()
 
 
 GPIO.cleanup()
