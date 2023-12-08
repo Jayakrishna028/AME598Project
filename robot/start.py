@@ -46,17 +46,17 @@ while True:
     # print(f"{distanceFront} and {distanceLeft}")
     
     # # print(f"distance Front = {distanceFront}    Distance Right = {distanceRight}    Distance Left = {distanceLeft}" )
-    # time.sleep(0.5)
+    time.sleep(0.5)
 
-    # if distanceFront > 25:
-    #     navigation.Forward()
-    # elif distanceRight() > 25:
-    #     navigation.turnRight()
-    # elif distanceLeft > 25:
-    #     navigation.turnLeft()
-    # else:
-    #     navigation.back()
-    #     navigation.turnRight()
+    if distanceFront > 25:
+        navigation.Forward()
+    elif distanceRight() > 25:
+        navigation.turnRight()
+    elif distanceLeft > 25:
+        navigation.turnLeft()
+    else:
+        navigation.back()
+        navigation.turnRight()
         
 
 
