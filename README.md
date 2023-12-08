@@ -12,7 +12,7 @@ In the realm of transportation, autonomous vehicle technology is a developing fi
 
 ## Improvements-and-Issues
 
-This project being a basic one, it is not provided with a lot of advances sensors which limited the vehicles ability to understand its surroundings. the car model will not be able to detected obstacles outside the plane of the ultrasonic sensors. This limits the possibility for accurate movement. As ultrasonic sensors are used it is not possible for the robot to get a 360 view of its surroundings which is possible with a LIDAR. Use of depth sensors and Accelerometer will also help in localization of the robot with its surroudings which is not implemented in this project.
+This project being a basic one, it is did not utilize advanced sensors which limited the vehicles ability to understand its surroundings. the car model will not be able to detected obstacles outside the plane of the ultrasonic sensors. This limits the possibility for accurate movement. As ultrasonic sensors are used it is not possible for the robot to get a 360 view of its surroundings which is possible with a LIDAR. Use of depth sensors and Accelerometer will also help in localization of the robot with its surroudings which is not implemented in this project.
 
 ## Future-Scope
 
