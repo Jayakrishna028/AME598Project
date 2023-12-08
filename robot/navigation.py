@@ -40,14 +40,14 @@ def stop():
 def turnLeft():
     pwm_LeftWheelPins1.ChangeDutyCycle(0)
     pwm_LeftWheelPins2.ChangeDutyCycle(0)
-    pwm_RightWheelPins1.ChangeDutyCycle(75) 
+    pwm_RightWheelPins1.ChangeDutyCycle(100) 
     pwm_RightWheelPins2.ChangeDutyCycle(0)
     time.sleep(1)
     stop()
 
 
 def turnRight():
-    pwm_LeftWheelPins1.ChangeDutyCycle(75) 
+    pwm_LeftWheelPins1.ChangeDutyCycle(100) 
     pwm_LeftWheelPins2.ChangeDutyCycle(0)
     pwm_RightWheelPins1.ChangeDutyCycle(0)
     pwm_RightWheelPins2.ChangeDutyCycle(0)
