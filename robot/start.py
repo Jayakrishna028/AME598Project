@@ -52,7 +52,7 @@ while time.time() - startTime < 60:
 
     if distanceFront > 30:
         navigation.Forward()
-    elif distanceRight() > 30:
+    elif distanceRight > 30:
         navigation.turnRight()
     elif distanceLeft > 30:
         navigation.turnLeft()
