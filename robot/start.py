@@ -49,9 +49,10 @@ while time.time() - startTime < 60:
     # # print(f"distance Front = {distanceFront}    Distance Right = {distanceRight}    Distance Left = {distanceLeft}" )
     time.sleep(0.5)
 
-    if distanceFront > 30:
+    if distanceFront > 50:
         navigation.Forward()
     elif distanceRight > 30:
+        navigation.stop()
         navigation.turnRight()
     elif distanceLeft > 30:
         navigation.turnLeft()

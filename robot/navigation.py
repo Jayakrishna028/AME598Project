@@ -59,7 +59,7 @@ def back():
     pwm_LeftWheelPins2.ChangeDutyCycle(75)  
     pwm_RightWheelPins1.ChangeDutyCycle(0)
     pwm_RightWheelPins2.ChangeDutyCycle(75)  
-    time.sleep(5)
+    time.sleep(1)
 
         
 
