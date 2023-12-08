@@ -1,3 +1,4 @@
+GPIO.cleanup()
 import navigation
 import time
 import Distance
@@ -5,6 +6,7 @@ from http_request import serverRequest
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 #motor pins
 RightSig1 = 2
 RightSig2 = 3

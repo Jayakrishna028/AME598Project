@@ -7,8 +7,8 @@ GPIO.setmode(GPIO.BCM)
 # set GPIO Pins
 trigPin1 = 14
 echoPin1 = 15
-trigPin2 = 17
-echoPin2 = 18
+trigPin2 = 7
+echoPin2 = 8
 trigPin3 = 23
 echoPin3 = 24
 
@@ -44,6 +44,7 @@ def distance(GPIO_TRIGGER, GPIO_ECHO):
     # multiply with the sonic speed (34300 cm/s)
     # and divide by 2, because there and back
     distance = (TimeElapsed * 34300) / 2
+    distance = round(distance, 2)
 
     return distance
 
