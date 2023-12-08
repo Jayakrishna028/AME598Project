@@ -5,7 +5,6 @@ import Distance
 from http_request import serverRequest
 import RPi.GPIO as GPIO
 
-GPIO.cleanup()
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 #motor pins
@@ -42,6 +41,7 @@ while True:
     distanceRight = Distance.distance(trigPin2, echoPin2)
     distanceLeft = Distance.distance(trigPin3 , echoPin3)
     print(distanceFront)
+    navigation.Forward()
     serverRequest(distanceFront, distanceRight, distanceLeft)
     # print(f"{distanceFront} and {distanceLeft}")
     
