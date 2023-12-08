@@ -41,10 +41,7 @@ while True:
     distanceRight = Distance.distance(trigPin2, echoPin2)
     distanceLeft = Distance.distance(trigPin3 , echoPin3)
     print(distanceFront)
-    if distanceFront > 25:
-        navigation.Forward()
-    else:
-        navigation.back()
+    navigation.Forward()
     serverRequest(distanceFront, distanceRight, distanceLeft)
     # print(f"{distanceFront} and {distanceLeft}")
     
