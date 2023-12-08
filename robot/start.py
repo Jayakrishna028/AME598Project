@@ -4,8 +4,8 @@ import time
 import Distance
 from http_request import serverRequest
 import RPi.GPIO as GPIO
-GPIO.cleanup()
 
+GPIO.cleanup()
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 #motor pins
