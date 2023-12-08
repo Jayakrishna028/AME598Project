@@ -36,7 +36,9 @@ GPIO.setup(echoPin2 , GPIO.IN)
 GPIO.setup(trigPin3 , GPIO.OUT)
 GPIO.setup(echoPin3 , GPIO.IN)
 
-while True:
+startTime = time.time()
+
+while time.time() - startTime < 30:
     distanceFront = Distance.distance(trigPin1 , echoPin1)
     distanceRight = Distance.distance(trigPin2, echoPin2)
     distanceLeft = Distance.distance(trigPin3 , echoPin3)
