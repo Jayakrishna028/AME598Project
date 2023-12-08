@@ -17,7 +17,8 @@ This project being a basic one, it is did not utilize advanced sensors which lim
 
 ## About-Code-Explanation
 
-the Server folder in the repo consists of the files required to  
+the Server folder in the repo consists of the files required to  run the server in cloud
+the robot folder in consists all the files that are required to run the autonomous vehicle controlled by Raspberry Pi.
 
 ## Future-Scope
 
